@@ -8,5 +8,20 @@ import FavoritesPage from '../pages/FavoritesPage'
 import NotFound from '../pages/NotFound'
 import Navbar from '../components/Navigation/Navbar'
 
+function App() {
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/recipes" element={<RecipesPage />} />
+        <Route path="/recipes/:id" element={<RecipeDetail />} />
+        <Route path="/meal-planner" element={<MealPlannerPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
 export default App
