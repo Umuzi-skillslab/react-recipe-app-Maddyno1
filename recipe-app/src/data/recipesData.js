@@ -707,3 +707,5 @@ export const sconesData = {
         "Cool on a wire rack for a few minutes.Serve warm with butter, jam, and cream.",
     ],
 };
+
+export const recipesData = [wafflesData, frenchToastData, bananaPancakesData, quicheData, fishTacosData, cucumberSaladData, chickenWingsData, tomatoeSoupData, lasagnaData, chickenMarsalaData, spaghettiAndMeatballsData, sampAndBeefStewData, pepperSteakPieData, fudgeBrowniesData, chocolateMuffinsData, cheesecakeData, onionRingsData, sconesData];
