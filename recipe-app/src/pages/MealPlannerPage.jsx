@@ -1,4 +1,4 @@
-
+import Button from "../components/UI/Button";
 
 function MealPlannerPage({ mealPlan, onAddMeal, onClearWeek }) {
     return (

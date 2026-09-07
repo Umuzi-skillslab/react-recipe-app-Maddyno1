@@ -1,3 +1,7 @@
+import { useState } from "react";
+import Modal from "../UI/Modal";
+import Button from "../UI/Button";
+
 function DayCard({ day, meals, onAddMeal, onRemoveMeal }) {
 
     const [modalSlot, setModalSlot] =useState(null);

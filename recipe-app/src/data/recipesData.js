@@ -487,7 +487,7 @@ export const sampAndBeefStewData = {
 export const pepperSteakPieData = {
     id: 13,
     title: "Pepper Steak Pie",
-    category: "Dinner",
+    category: "dinner",
     cuisine: "South African",
     difficulty: "Medium",
     cookTime: 180,
@@ -648,7 +648,7 @@ export const cheesecakeData = {
 export const onionRingsData = {
     id: 17,
     title: "Airfryer Onion Rings",
-    category: "Snack",
+    category: "snack",
     cuisine: "American",
     difficulty: "Easy",
     cookTime: 32,
@@ -678,7 +678,7 @@ export const onionRingsData = {
 export const sconesData = {
     id: 18,
     title: "Fluffy Scones",
-    category: "Snack",
+    category: "snack",
     cuisine: "South African",
     difficulty: "Medium",
     cookTime: 45,

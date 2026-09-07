@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import Button from "../UI/Button";
 
 const RecipeCard = ({ recipe, isFavorite, onFavoriteToggle }) => {
     return (
@@ -8,7 +9,7 @@ const RecipeCard = ({ recipe, isFavorite, onFavoriteToggle }) => {
             <p>Cook time: {recipe.cookTime} minutes</p>
             <Button
                 variant={isFavorite ? 'danger' : 'secondary'}
-                onClick={() => onFavoriteToggle(recipe.id)}
+                onClick={() => onFavoriteToggle(recipe)}
             >
                 {isFavorite ? '❤️ Favorited' : '🤍 Favorite'}
             </Button>
@@ -16,7 +17,7 @@ const RecipeCard = ({ recipe, isFavorite, onFavoriteToggle }) => {
     );
 }
 
-RecipeCard.PropTypes = {
+RecipeCard.propTypes = {
     recipe: PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,

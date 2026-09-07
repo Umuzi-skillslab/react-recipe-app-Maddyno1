@@ -31,7 +31,7 @@ function App() {
 
   useEffect(() => {
     const savedMealPlan = localStorage.getItem('mealPlan');
-    if (savedMealPlan) setFavorites(JSON.parse(savedMealPlan));
+    if (savedMealPlan) setMealPlan(JSON.parse(savedMealPlan));
   }, []);
 
   useEffect(() => {
@@ -76,7 +76,6 @@ function App() {
         <Route path="/favorites" element={<FavoritesPage favorites={favorites} onFavoriteToggle={handleFavoriteToggle} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer/>
     </BrowserRouter>
   );
 }

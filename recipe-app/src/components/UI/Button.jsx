@@ -1,4 +1,4 @@
-import styles from './Button.module.css';
+import styles from './UI.module.css';
 
 function Button({ variant = 'primary', children, onClick }) {
     return (
@@ -7,3 +7,5 @@ function Button({ variant = 'primary', children, onClick }) {
         </button>
     );
 }
+
+export default Button;
