@@ -1,3 +1,5 @@
+import styles from "./Media.module.css";
+
 const VideoPlayer = ({ videoUrl, title }) => {
     return (
         <div className={styles.videoContainer}>

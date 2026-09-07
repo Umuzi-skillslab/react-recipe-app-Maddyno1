@@ -1,3 +1,5 @@
+import styles from "./Media.module.css";
+
 const AudioPlayer = ({ audioUrl, title }) => {
   return (
     <div className={styles.audioContainer}>
