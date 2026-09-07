@@ -46,7 +46,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar favoritesCount={favorites.length} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/recipes" element={<RecipesPage favorites={favorites} onFavoriteToggle={handleFavoriteToggle} />} />
