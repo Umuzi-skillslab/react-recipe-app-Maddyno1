@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-function RecipeCard({ recipe, isFavorite, onFavoriteToggle }) {
+const RecipeCard = ({ recipe, isFavorite, onFavoriteToggle }) => {
     return (
         <div className="recipe-card">
             <img src={recipe.image} alt={recipe.title} />

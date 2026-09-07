@@ -76,6 +76,7 @@ function App() {
         <Route path="/favorites" element={<FavoritesPage favorites={favorites} onFavoriteToggle={handleFavoriteToggle} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }
