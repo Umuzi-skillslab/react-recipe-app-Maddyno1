@@ -31,7 +31,7 @@ function Navbar() {
                 to="/favorites"
                 className={location.pathname === '/favorites' ? styles.active : ''}
             >
-                Favorites
+                Favorites {favoritesCount > 0 && `(${favoritesCount})`}
             </Link>
         </nav>
     );
