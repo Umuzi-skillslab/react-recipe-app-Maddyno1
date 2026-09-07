@@ -53,6 +53,14 @@ function App() {
     }));
   };
 
+  //Sets the slot back to null
+  const handleRemoveMeal = (day, slot) => {
+    setMealPlan(prev => ({
+      ...prev,
+      [day]: { ...prev[day], [slot]: null },
+    }));
+  };
+
   const handleClearWeek = () => {
     setMealPlan({
       monday: { breakfast: null, lunch: null, dinner: null },
@@ -72,7 +80,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/recipes" element={<RecipesPage favorites={favorites} onFavoriteToggle={handleFavoriteToggle} />} />
         <Route path="/recipes/:id" element={<RecipeDetail />} />
-        <Route path="/meal-planner" element={<MealPlannerPage mealPlan={mealPlan} onAddMeal={handleAddMeal} onClearWeek={handleClearWeek} />} />
+        <Route path="/meal-planner" element={<MealPlannerPage mealPlan={mealPlan} onAddMeal={handleAddMeal} onRemoveMeal={handleRemoveMeal} onClearWeek={handleClearWeek} />} />
         <Route path="/favorites" element={<FavoritesPage favorites={favorites} onFavoriteToggle={handleFavoriteToggle} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
