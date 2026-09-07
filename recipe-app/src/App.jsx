@@ -9,7 +9,7 @@ import NotFound from './pages/NotFound'
 import Navbar from './components/Navigation/Navbar'
 
 function App() {
-  const [favorites, setFavorites] = useState
+  const [favorites, setFavorites] = useState([])
   const [mealPlan, setMealPlan] = useState({
     monday: { breakfast: null, lunch: null, dinner: null },
     tuesday: { breakfast: null, lunch: null, dinner: null },
