@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { recipesData } from '../data/recipesData';
 import SearchBar from '../components/UI/SearchBar';
 import RecipeList from '../components/Recipe/RecipeList';
+import Loading from '..components/UI/loading';
 
 function RecipesPage({favorites, onFavoriteToggle }) {
     const [recipes, setRecipes] = useState([]);
