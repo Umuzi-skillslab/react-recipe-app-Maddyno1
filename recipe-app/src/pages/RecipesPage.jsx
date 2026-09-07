@@ -6,16 +6,23 @@ import RecipeList from '../components/Recipe/RecipeList';
 function RecipesPage({favorites, onFavoriteToggle }) {
     const [recipes, setRecipes] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        setRecipes(recipesData);
+        setTimeout(() => {
+            setRecipes(recipesData);
+            setIsLoading(false);
+        }, 500);
+        
     }, []);
 
     const filteredRecipes = recipes.filter((recipe) =>
         recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    return (
+    return isLoading ? (
+        <Loading/>
+    ) : (
         <div>
             <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
             <RecipeList
