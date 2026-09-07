@@ -1,41 +1,36 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import Modal from "../UI/Modal";
 import Button from "../UI/Button";
+import styles from "./MealPlanner.module.css";
 
-function DayCard({ day, meals, onAddMeal, onRemoveMeal }) {
+const SLOTS = ['breakfast', 'lunch', 'dinner'];
+
+//Each meal slot is color-coded
+const SLOT_COLORS = {breakfast: '#e67e22', lunch: '#2980b9', dinner: '#8e44ad'};
+
+function DayCard({ day, meals, allRecipes = [], onAddMeal, onRemoveMeal }) {
 
     const [modalSlot, setModalSlot] =useState(null);
-    const openModalFor = (day, slot) => setModalSlot(slot);
 
     return (
-        <div className="day-card">
-            <h3>{day}</h3>
-            {meals.breakfast ? (
-                <p>
-                    {meals.breakfast.title}
-                    <Button onClick={() => onRemoveMeal(day, 'breakfast')}>Remove</Button>
-                </p>
-            ) : (
-                <Button onClick={() => openModalFor(day, 'breakfast')}>Add Breakfast</Button>
-            )}
+        <div className={styles.dayCard}>
+            <h3 className={styles.dayTitle}>{day}</h3>
 
-            {meals.lunch ? (
-                <p>
-                    {meals.lunch.title}
-                    <Button onClick={() => onRemoveMeal(day, 'lunch')}>Remove</Button>
-                </p>
-            ) : (
-                <Button onClick={() => openModalFor(day, 'lunch')}>Add Lunch</Button>
-            )}
+            {SLOTS.map(slot => (
+                <div key={slot} className={meals[slot] ? styles.slotFilled : styles.slotEmpty}>
+                    <span className={styles.slotLabel} style={{ color: SLOT_COLORS[slot] }}>{slot}</span>
 
-            {meals.dinner ? (
-                <p>
-                    {meals.dinner.title}
-                    <Button onClick={() => onRemoveMeal(day, 'dinner')}>Remove</Button>
-                </p>
-            ) : (
-                <Button onClick={() => openModalFor(day, 'dinner')}>Add Dinner</Button>
-            )}
+                    {meals[slot] ? (
+                        <div className={styles.slotContent}>
+                            <p>{meals[slot].title}</p>
+                            <Button variant="danger" onClick={() => onRemoveMeal(day, slot)}>✕</Button>
+                        </div>
+                    ) : (
+                        <Button onClick={() => setModalSlot(slot)}>+ Add {slot}</Button>
+                    )}
+                </div>
+            ))}
 
             {modalSlot && (
                 <Modal onClose={() => setModalSlot(null)}>
@@ -43,6 +38,7 @@ function DayCard({ day, meals, onAddMeal, onRemoveMeal }) {
                     {allRecipes.map(recipe => (
                         <button
                             key={recipe.id}
+                            className={styles.recipeChoice}
                             onClick={() => {
                                 onAddMeal(day, modalSlot, recipe);
                                 setModalSlot(null);
@@ -56,3 +52,9 @@ function DayCard({ day, meals, onAddMeal, onRemoveMeal }) {
         </div>
     );
 }
+
+DayCard.propTypes = {
+    day: PropTypes
+}
+
+export default DayCard
