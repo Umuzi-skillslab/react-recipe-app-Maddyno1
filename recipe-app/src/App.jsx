@@ -16,7 +16,7 @@ function App() {
     wednesday: { breakfast: null, lunch: null, dinner: null },
     thursday: { breakfast: null, lunch: null, dinner: null },
     friday: { breakfast: null, lunch: null, dinner: null },
-    satday: { breakfast: null, lunch: null, dinner: null },
+    saturday: { breakfast: null, lunch: null, dinner: null },
     sunday: { breakfast: null, lunch: null, dinner: null },
   });
 
