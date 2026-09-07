@@ -1,6 +1,7 @@
 import styles from "./Media.module.css";
 
-const AudioPlayer = ({ audioUrl, title }) => {
+//Default audio keeps player functional
+const AudioPlayer = ({ audioUrl = "https://www.w3schools.com/html/horse.mp3", title = "Cooking Tip" }) => {
   return (
     <div className={styles.audioContainer}>
       <h4>{title}</h4>
