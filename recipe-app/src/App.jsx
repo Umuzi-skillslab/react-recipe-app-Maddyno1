@@ -29,6 +29,15 @@ function App() {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 
+  useEffect(() => {
+    const savedMealPlan = localStorage.getItem('mealPlan');
+    if (savedMealPlan) setFavorites(JSON.parse(savedMealPlan));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('mealPlan', JSON.stringify(mealPlan));
+  }, [mealPlan]);
+
   const handleFavoriteToggle = (recipe) => {
     setFavorites(prev =>
       prev.some(f => f.id === recipe.id)
@@ -44,6 +53,18 @@ function App() {
     }));
   };
 
+  const handleClearWeek = () => {
+    setMealPlan({
+      monday: { breakfast: null, lunch: null, dinner: null },
+    tuesday: { breakfast: null, lunch: null, dinner: null },
+    wednesday: { breakfast: null, lunch: null, dinner: null },
+    thursday: { breakfast: null, lunch: null, dinner: null },
+    friday: { breakfast: null, lunch: null, dinner: null },
+    saturday: { breakfast: null, lunch: null, dinner: null },
+    sunday: { breakfast: null, lunch: null, dinner: null },
+    });
+  };
+
   return (
     <BrowserRouter>
       <Navbar favoritesCount={favorites.length} />
@@ -51,7 +72,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/recipes" element={<RecipesPage favorites={favorites} onFavoriteToggle={handleFavoriteToggle} />} />
         <Route path="/recipes/:id" element={<RecipeDetail />} />
-        <Route path="/meal-planner" element={<MealPlannerPage mealPlan={mealPlan} onAddMeal={handleAddMeal} />} />
+        <Route path="/meal-planner" element={<MealPlannerPage mealPlan={mealPlan} onAddMeal={handleAddMeal} onClearWeek={handleClearWeek} />} />
         <Route path="/favorites" element={<FavoritesPage favorites={favorites} onFavoriteToggle={handleFavoriteToggle} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

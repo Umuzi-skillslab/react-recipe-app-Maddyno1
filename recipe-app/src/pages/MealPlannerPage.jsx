@@ -1,5 +1,11 @@
-function MealPlannerPage() {
-    return <h1>Meal Planner Page</h1>;
+function MealPlannerPage({ mealPlan, onAddMeal, onClearWeek }) {
+    return (
+        <div>
+            <h1>Meal Planner</h1>
+            <Button onClick={onClearWeek}>Clear Week</Button>
+            <MealPlanner mealPlan={mealPlan} onAddMeal={onAddMeal} />
+        </div>
+    );
 }
 
 export default MealPlannerPage;
