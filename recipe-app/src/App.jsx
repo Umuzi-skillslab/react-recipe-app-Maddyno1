@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Home from './pages/Home'
 import RecipesPage from './pages/RecipesPage'
@@ -8,16 +8,35 @@ import FavoritesPage from './pages/FavoritesPage'
 import NotFound from './pages/NotFound'
 import Navbar from './components/Navigation/Navbar'
 
+const [favorites, setFavorites] = useState
+
+const handleFavoriteToggle = (recipe) => {
+  setFavorites(prev =>
+    prev.some(f => f.id === recipe.id)
+    ? prev.filter(f => f.id !== recipe.id)
+    : [...prev, recipesData]
+  );
+};
+
+useEffect(() => {
+  const saved = localStorage.getItem('favorites');
+  if (saved) setFavorites(JSON.parse(saved));
+}, []);
+
+useEffect(() => {
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+}, [favorites]);
+
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/recipes" element={<RecipesPage />} />
+        <Route path="/recipes" element={<RecipesPage favorites={favorites} onFavoriteToggle={handleFavoriteToggle} />} />
         <Route path="/recipes/:id" element={<RecipeDetail />} />
         <Route path="/meal-planner" element={<MealPlannerPage />} />
-        <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/favorites" element={<FavoritesPage favorites={favorites} onFavoriteToggle={handleFavoriteToggle} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
