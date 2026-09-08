@@ -1,0 +1,12 @@
+.videoContainer { margin: 2rem 0 1rem; }
+.videoContainer h3 { margin-bottom: 0.5rem; color: var(--secondary); }
+.videoContainer video {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background: #000;
+}
+
+.audioContainer { margin-top: 0.5rem; }
+.audioContainer h4 { margin-bottom: 0.4rem; }
+.audioContainer audio { width: 100%; }

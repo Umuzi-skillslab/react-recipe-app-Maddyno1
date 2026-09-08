@@ -1,0 +1,76 @@
+.planner {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.dayCard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--raidus);
+    box-shadow: var(--shadow);
+    padding: 1.1rem;
+}
+
+.dayTitle {
+    text-transform: capitalize;
+    color: var(--primary);
+    border-bottom: 2px solid var(--bg);
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.75rem;
+}
+
+.slotFilled,
+.slotEmpty {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.6rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.slotFilled {
+    background: #f1f8f1;
+    border: 1px solid #d5e8d5;
+}
+
+.slotEmpty {
+    background: var(--bg);
+    border: 1px dashed var(--border);
+}
+
+.slotLabel {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.slotContent {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.slotContent p {
+    flex: 1;
+    font-size: 0.9rem;
+}
+
+.recipeChoice {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.55rem 0.75rem;
+    margin-bottom: 0.4rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+}
+
+/*Hover effect*/
+.recipeChoice:hover {
+    background: #fff0f0;
+    border-color: var(--primary);
+}
