@@ -12,6 +12,7 @@ function Home() {
                 <AudioPlayer
                     audioUrl="https://www.w3schools.com/html/horse.mp3"
                     title="Cooking Tips: Getting started in the kitchen"
+                    image="/assets/images/lasagna.jpg"
                 />
             </Card>
         </div>

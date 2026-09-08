@@ -11,7 +11,7 @@ function Navbar({ favoritesCount = 0 }) {
     //startsWith keeps "Recipes highlighted on /recipes/id detail pages"
     const linkClass = (path, exact = true) =>
         (exact ? location.pathname === path : location.pathname.startsWith(path))
-            ? `${styles.navLink} ${styles.actice}`
+            ? `${styles.navLink} ${styles.active}`
             : styles.navLink
 
     return (

@@ -31,6 +31,7 @@ const RecipeDetail = () => {
             <Button variant="secondary" onClick={() => navigate('/recipes')}>Back to Recipes</Button>
 
             <h1>{recipe.title}</h1>
+            <img className={styles.detailImage} src={recipe.image} alt={recipe.title} />
             <span className={styles.badge} style={{ backgroundColor: badgeColor }}>{recipe.difficulty}</span>
             <p>{formatCookTime(recipe.cookTime)} | Servings: {recipe.servings || 4} | {recipe.cuisine}</p>
 
