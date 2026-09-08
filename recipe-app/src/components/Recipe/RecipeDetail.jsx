@@ -24,7 +24,7 @@ const RecipeDetail = () => {
 
     //Badge colour according to difficulty
     const badgeColor =
-        recipe.difficulty === "easy" ? "#2e7d32" : recipe.difficulty === "medium" ? "#f9a825" : "#c62828";
+        recipe.difficulty === "Easy" ? "#2e7d32" : recipe.difficulty === "Medium" ? "#f9a825" : "#c62828";
 
     return (
         <div className={`page ${styles.detail}`}>

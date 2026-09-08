@@ -17,7 +17,7 @@ function Navbar({ favoritesCount = 0 }) {
     return (
         <nav className={styles.navbar}>
             <div className={styles.navHeader}>
-                <Link to="/" className={styles.brand} onClick={closeMenu}>🔥 Flaming Inferno 🔥</Link>
+                <Link to="/" className={styles.brand} onClick={closeMenu}>Flaming Inferno</Link>
                 <button
                     className={styles.hamburger}
                     onClick={() => setMenuOpen(!menuOpen)}

@@ -280,7 +280,7 @@ export const lasagnaData = {
     difficulty: "Medium",
     cookTime: 100,
     servings: 12,
-    image: "/assets.images/lasagna.jpg",
+    image: "/assets/images/lasagna.jpg",
     videoUrl: "https://www.youtube.com/watch?v=QZloaLmvSP0",
     ingredients: [
         {
@@ -433,7 +433,7 @@ export const sampAndBeefStewData = {
     difficulty: "Hard",
     cookTime: 150,
     servings: 6,
-    image: "/assets/images/sampAndBeefStew",
+    image: "/assets/images/sampAndBeefStew.jpg",
     videoUrl: "https://www.youtube.com/watch?v=_CdwirGkAbg",
     ingredients: [
         {

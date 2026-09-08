@@ -4,9 +4,9 @@ import AudioPlayer from "../components/Media/AudioPlayer";
 function Home() {
     return (
         <div className="page">
-            <h1>Welcome to THE FLAMING INFERNO 🔥</h1>
+            <h1>Welcome to THE FLAMING INFERNO</h1>
             <p>Browse a wide range of recipes from around the world, save your favorites, and plan your meals for the week.</p>
-            <p><em>FLAMING INFERNO: Scorching your taste buds with unbelievable flavor.</em></p>
+            <p><em>Scorching your taste buds with unbelievable flavor.</em></p>
             {/*Audio is wrapped in a card*/}
             <Card title="Cooking Tip of the Day!">
                 <AudioPlayer

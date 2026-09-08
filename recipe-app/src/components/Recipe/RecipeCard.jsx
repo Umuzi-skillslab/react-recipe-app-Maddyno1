@@ -14,7 +14,7 @@ const RecipeCard = ({ recipe, isFavorite, onFavoriteToggle }) => {
             <img className={styles.image} src={recipe.image} alt={recipe.title} />
             <h3><Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link></h3>
             <p className={styles.meta}>
-                {recipe.difficulty === "easy" ? "🟢" : recipe.difficulty === "medium" ? "🟡" : "🔴"}{" "}
+                {recipe.difficulty === "Easy" ? "🟢" : recipe.difficulty === "Medium" ? "🟡" : "🔴"}{" "}
                 {formatCookTime(recipe.cookTime) } | Serves {recipe.servings || 4}
             </p>
             <Button
