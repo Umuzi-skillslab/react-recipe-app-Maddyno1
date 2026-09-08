@@ -7,6 +7,15 @@
     background: #000;
 }
 
+.videoFrame {
+    width: 100%;
+    aspect-ratio: 16 /9;
+    border: 0;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background: #000;
+}
+
 .audioContainer { margin-top: 0.5rem; max-width: 320px; }
 .audioContainer h4 { margin-bottom: 0.4rem; }
 .audioContainer audio { width: 100%; }
@@ -14,7 +23,6 @@
 .audioImage {
     width: 100%;
     height: 160px;
-    align-items: center;
     object-fit: cover;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
