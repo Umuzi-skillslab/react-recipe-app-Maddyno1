@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Link,useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from './Navbar.module.css';
 
-function Navbar({favoritesCount = 0 }) {
+function Navbar({ favoritesCount = 0 }) {
     const location = useLocation();
     //Burger menu useState
     const [menuOpen, setMenuOpen] = useState(false);
@@ -10,39 +10,31 @@ function Navbar({favoritesCount = 0 }) {
 
     //startsWith keeps "Recipes highlighted on /recipes/id detail pages"
     const linkClass = (path, exact = true) =>
-    (exact ? location.pathname === path : location.pathname.startsWith(path))
-    ? `${styles.navLink} ${styles.actice}`
-    : styles.navLink
+        (exact ? location.pathname === path : location.pathname.startsWith(path))
+            ? `${styles.navLink} ${styles.actice}`
+            : styles.navLink
 
     return (
         <nav className={styles.navbar}>
-            <Link
-                to="/"
-                className={location.pathname === '/' ? styles.active : ''}
-            >
-                Home
-            </Link>
+            <div className={styles.navHeader}>
+                <Link to="/" className={styles.brand} onClick={closeMenu}>🔥 Flaming Inferno 🔥</Link>
+                <button
+                    className={styles.hamburger}
+                    onClick={() => setMenuOpen(!menuOpen)}
+                    aria-label="Toggle navigation menu"
+                >
+                    {menuOpen ? "✕" : "☰"}
+                </button>
+            </div>
 
-            <Link
-                to="/recipes"
-                className={location.pathname.startsWith('/recipes') ? styles.active : ''}
-            >
-                Recipes
-            </Link>
-
-            <Link
-                to="/meal-planner"
-                className={location.pathname === '/meal-planner' ? styles.active : ''}
-            >
-                Meal Planner
-            </Link>
-
-            <Link
-                to="/favorites"
-                className={location.pathname === '/favorites' ? styles.active : ''}
-            >
-                Favorites {favoritesCount > 0 && `(${favoritesCount})`}
-            </Link>
+            <div className={`${styles.navLinks} ${menuOpen ? styles.open : ""}`}>
+                <Link to="/" className={linkClass("/")} onClick={closeMenu}>Home</Link>
+                <Link to="/recipes" className={linkClass("/recipes", false)} onClick={closeMenu}>Recipes</Link>
+                <Link to="/meal-planner" className={linkClass("/meal-planner")} onClick={closeMenu}>Meal Planner</Link>
+                <Link to="/favorites" className={linkClass("/favorites")} onClick={closeMenu}>
+                    Favorites {favoritesCount > 0 && `(${favoritesCount})`}
+                </Link>
+            </div>
         </nav>
     );
 }
