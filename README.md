@@ -1,17 +1,61 @@
-# React_Recipe_App
+## 🔥THE FLAMING INFERNO🔥Recipe App
+Welcome to my single-page recipe app, built with React and Vite. Users can browse a selection on the finest recipes sourced from sites like "The Preppy Chef", Ntsako T on YouTube and a few others. They can view the full recipe details, watch a YouTube tutorial, save their favorite and plan meals for the whole week.
 
-A local cooking school has partnered with food bloggers to create an interactive recipe discovery and meal planning application. They need a modern, responsive React application that allows users to browse recipes, plan weekly meals, watch cooking tutorials, and save their favorite dishes. You've been hired to build this application from scratch, demonstrating your proficiency in React fundamentals, component architecture, state management, and modern JavaScript practices.
+THE FLAMING INFERNO: Scorching your tastebuds with unbelievable flavor!
 
-Your task is to build a fully functional Recipe Discovery & Meal Planning application using React. You must create the entire application from the ground up, demonstrating mastery of functional components, hooks, props, event handling, routing, conditional rendering, and multimedia integration. The application must be well-organized, styled professionally, and provide an excellent user experience.
+## Features List:
+1. Recipe catalog- 18 recipes for breakfast, lunch, dinner, dessert, and snacks, each with an image, cook time, difficulty level and servings
+2. Search Bar- search for the recipe you're looking for using the title
+3. Filter Bar- filter according to category and cuisine
+4. Simulated loading state- simulated delay which shows a spinner
+5. Recipe Detail page- shows an image of the dish, step-by-step instructions as well as an embedded video tutorial(Youtube links are embedded using iframe)
+6. Favorites-heart button which allows you to favorite and unfavorite
+7. Meal Planner- Monday to Sunday meal planning for three meals of the day
+8. Responsive navigation- navbar collapses into hamburger menu
+9. 404 page- for unmatched routes
 
-## Project Overview: Recipe Discovery & Meal Planning App
-**Core Features Required:**
-- Browse and search recipes by category, cuisine, or ingredients
-- View detailed recipe information with ingredients and instructions
-- Watch embedded cooking tutorial videos
-- Listen to cooking tips audio guides
-- Add recipes to a weekly meal planner (Monday-Sunday)
-- Mark recipes as favorites
-- Filter and sort recipes dynamically
-- Responsive navigation with multiple routes
-- Interactive user interface with smooth transitions
+## Technologies Used:
+1. React
+2. React Router DOM(BrowserRouter, nested routes, useParams, useNavigate, useLocation)
+3. Proptypes
+4. Vite
+5. CSS Module
+6. ESLint
+
+## Component Architecture:
+
+
+## Installation Instructions:
+# Step 1:
+Clone repo into your Vs Code
+
+# Step 2:
+In your terminal, navigate to the right file using "cd react-recipe-app-Maddyno1/recipe-app"
+
+# Step 3:
+In your terminal run "npm install" and then "npm start" OR "npm run dev"
+
+## Project Structure:
+Folder organization explanation
+
+## Component Descriptions:
+Brief description of each major component
+
+## State Management:
+How state flows through the application
+
+## Routing:
+Explanation of all routes
+
+## Future Enhancements:
+Ideas for additional features
+
+## Screenshots:
+Home page
+![Home page](screenshots/homeS.png)
+![Recipes page with filters](screenshots/recipesS.png)
+![Recipe detail page with video](screenshots/detailsS.png)
+![Meal planner page](screenshots/mealplannerS.png)
+![Favorites page](screenshots/favoritesS.png)
+![Mobile responsive view](screenshots/hamburgerS.png)
+![Mobile responsive view](screenshots/responsiveviewS.png)
