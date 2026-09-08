@@ -1,18 +1,14 @@
 import RecipeCard from "./RecipeCard";
+import styles from "./Recipe.module.css";
 
-
-function RecipeList({ recipes, favorites, onFavoriteToggle }) {
-    if (recipes.length === 0) {
-        return <p>No recipes found.</p>;
-    }
-
+function RecipeList({ recipes, favorites = [], onFavoriteToggle }) {
     return (
-        <div className="recipe-list">
-            {recipes.map((recipe) => (
+        <div className={styles.grid}>
+            {recipes.map(recipe => (
                 <RecipeCard
                     key={recipe.id}
                     recipe={recipe}
-                    isFavorite={favorites.some((fav) => fav.id === recipe.id)}
+                    isFavorite={favorites.some(fav => fav.id === recipe.id)}
                     onFavoriteToggle={onFavoriteToggle}
                 />
             ))}
