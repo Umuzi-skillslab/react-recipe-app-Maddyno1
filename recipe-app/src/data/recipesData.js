@@ -184,7 +184,7 @@ export const cucumberSaladData = {
     id: 6,
     title: "Cucumber Salad",
     category: "lunch",
-    cuisine: "American, British",
+    cuisine: "British",
     difficulty: "Easy",
     cookTime: 15,
     servings: 10,
