@@ -15,7 +15,7 @@ const RecipeCard = ({ recipe, isFavorite, onFavoriteToggle }) => {
             <h3><Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link></h3>
             <p className={styles.meta}>
                 {recipe.difficulty === "easy" ? "🟢" : recipe.difficulty === "medium" ? "🟡" : "🔴"}{" "}
-                {formatCookTime(recipe.cookTime) } · Serves {recipe.servings || 4}
+                {formatCookTime(recipe.cookTime) } | Serves {recipe.servings || 4}
             </p>
             <Button
                 variant={isFavorite ? "danger" : "secondary"}
