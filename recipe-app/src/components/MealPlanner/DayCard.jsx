@@ -54,7 +54,11 @@ const DayCard = ({ day, meals, allRecipes = [], onAddMeal, onRemoveMeal }) => {
 };
 
 DayCard.propTypes = {
-    day: PropTypes
-}
+    day: PropTypes.string.isRequired,
+    meals: PropTypes.object.isRequired,
+    allRecipes: PropTypes.array,
+    onAddMeal: PropTypes.func.isRequired,
+    onRemoveMeal: PropTypes.func.isRequired,
+};
 
 export default DayCard
