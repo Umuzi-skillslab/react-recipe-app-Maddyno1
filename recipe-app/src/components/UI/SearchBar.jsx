@@ -7,7 +7,7 @@ const SearchBar = ({ searchTerm, onSearchChange, placeholder = "Search recipes..
     return (
         //Form exists so Enter submits properly
         <form
-            className={`${styles.searchBar} ${isFocused ? styles.serachFocused : ""}`}
+            className={`${styles.searchBar} ${isFocused ? styles.searchFocused : ""}`}
             onSubmit={(e) => e.preventDefault()}
         >
             <input
