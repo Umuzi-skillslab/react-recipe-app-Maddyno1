@@ -1,7 +1,7 @@
 import RecipeCard from "./RecipeCard";
 import styles from "./Recipe.module.css";
 
-function RecipeList({ recipes, favorites = [], onFavoriteToggle }) {
+const RecipeList = ({ recipes, favorites = [], onFavoriteToggle }) => {
     return (
         <div className={styles.grid}>
             {recipes.map(recipe => (
@@ -14,6 +14,6 @@ function RecipeList({ recipes, favorites = [], onFavoriteToggle }) {
             ))}
         </div>
     );
-}
+};
 
 export default RecipeList;

@@ -6,7 +6,7 @@ import RecipeList from '../components/Recipe/RecipeList';
 import Loading from '../components/UI/Loading';
 import styles from "../components/Recipe/Recipe.module.css";
 
-function RecipesPage({favorites, onFavoriteToggle }) {
+const RecipesPage = ({favorites, onFavoriteToggle }) => {
     const [recipes, setRecipes] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [category, setCategory] = useState("all");
@@ -55,6 +55,6 @@ function RecipesPage({favorites, onFavoriteToggle }) {
             )}
         </div>
     );
-}
+};
 
 export default RecipesPage;

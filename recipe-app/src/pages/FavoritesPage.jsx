@@ -1,6 +1,6 @@
 import RecipeList from "../components/Recipe/RecipeList";
 
-function FavoritesPage({favorites, onFavoriteToggle }) {
+const FavoritesPage = ({favorites, onFavoriteToggle }) => {
     return (
         //Wrapped content in div for consistent spacing
         <div className="page">
@@ -16,6 +16,6 @@ function FavoritesPage({favorites, onFavoriteToggle }) {
             )}
         </div>
     );
-}
+};
 
 export default FavoritesPage;

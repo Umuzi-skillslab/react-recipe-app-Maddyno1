@@ -1,7 +1,7 @@
 import styles from "../UI/UI.module.css";
 
 //Option values set according to those in recipesData.js
-function RecipeFilter({ category, cuisine, onCategoryChange, onCuisineChange }) {
+const RecipeFilter = ({ category, cuisine, onCategoryChange, onCuisineChange }) => {
     return (
         <div className={styles.filterBar}>
             <select className={styles.select} value={category} onChange={(e) => onCategoryChange(e.target.value)}>
@@ -25,6 +25,6 @@ function RecipeFilter({ category, cuisine, onCategoryChange, onCuisineChange }) 
             </select>
         </div>
     );
-}
+};
 
 export default RecipeFilter

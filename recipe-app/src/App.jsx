@@ -8,7 +8,7 @@ import FavoritesPage from './pages/FavoritesPage'
 import NotFound from './pages/NotFound'
 import Navbar from './components/Navigation/Navbar'
 
-function App() {
+const App = () => {
   const [favorites, setFavorites] = useState([])
   const [mealPlan, setMealPlan] = useState({
     monday: { breakfast: null, lunch: null, dinner: null },
@@ -86,6 +86,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App

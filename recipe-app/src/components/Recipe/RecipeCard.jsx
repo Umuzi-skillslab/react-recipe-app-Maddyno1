@@ -7,7 +7,7 @@ import styles from "./Recipe.module.css";
 const RecipeCard = ({ recipe, isFavorite, onFavoriteToggle }) => {
     return (
         //Tints the card backround when favorited
-        <div 
+        <div
             className={`${styles.card} ${isFavorite ? styles.favorite : ""}`}
             style={{backgroundColor: isFavorite ? "#efe2e2" : "#ffffff"}}
         >

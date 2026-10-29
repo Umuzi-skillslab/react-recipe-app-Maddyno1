@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./UI.module.css";
 
-function SearchBar({ searchTerm, onSearchChange, placeholder = "Search recipes..." }) {
+const SearchBar = ({ searchTerm, onSearchChange, placeholder = "Search recipes..." }) => {
     const [isFocused, setIsFocused] = useState(false);
 
     return (
@@ -21,6 +21,6 @@ function SearchBar({ searchTerm, onSearchChange, placeholder = "Search recipes..
             <button type="submit">Search</button>
         </form>
     );
-}
+};
 
 export default SearchBar

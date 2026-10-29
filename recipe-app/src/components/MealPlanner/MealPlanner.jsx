@@ -3,7 +3,7 @@ import styles from "./MealPlanner.module.css";
 
 const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
-function MealPlanner({ mealPlan, allRecipes,onAddMeal, onRemoveMeal }) {
+const MealPlanner = ({ mealPlan, allRecipes,onAddMeal, onRemoveMeal }) => {
     return (
         <div className={styles.planner}>
             {days.map(day => (
@@ -18,6 +18,6 @@ function MealPlanner({ mealPlan, allRecipes,onAddMeal, onRemoveMeal }) {
             ))}
         </div>
     );
-}
+};
 
 export default MealPlanner;

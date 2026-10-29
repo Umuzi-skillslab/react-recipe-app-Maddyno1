@@ -2,7 +2,7 @@ import Card from "../components/UI/Card";
 import AudioPlayer from "../components/Media/AudioPlayer";
 import styles from "./Home.module.css";
 
-function Home() {
+const Home = () => {
     return (
         <div className={`page ${styles.home}`}>
             <h1>Welcome to THE FLAMING INFERNO</h1>
@@ -18,6 +18,6 @@ function Home() {
             </Card>
         </div>
     );
-}
+};
 
 export default Home;

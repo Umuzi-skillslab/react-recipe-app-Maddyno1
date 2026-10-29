@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from './Navbar.module.css';
 
-function Navbar({ favoritesCount = 0 }) {
+const Navbar = ({ favoritesCount = 0 }) => {
     const location = useLocation();
     //Burger menu useState
     const [menuOpen, setMenuOpen] = useState(false);
@@ -37,6 +37,6 @@ function Navbar({ favoritesCount = 0 }) {
             </div>
         </nav>
     );
-}
+};
 
 export default Navbar;

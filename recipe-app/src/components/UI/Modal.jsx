@@ -1,6 +1,6 @@
 import styles from "./UI.module.css";
 
-function Modal({ onClose, children }) {
+const Modal = ({ onClose, children }) => {
     //stopPropagation keeps clicks inside the box from closing it
     return (
         <div className={styles.modalBackdrop} onClick={onClose}>
@@ -10,6 +10,6 @@ function Modal({ onClose, children }) {
             </div>
         </div>
     );
-}
+};
 
 export default Modal;

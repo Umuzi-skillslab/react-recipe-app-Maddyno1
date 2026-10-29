@@ -2,7 +2,7 @@ import Button from "../components/UI/Button";
 import MealPlanner from "../components/MealPlanner/MealPlanner";
 import { recipesData } from "../data/recipesData";
 
-function MealPlannerPage({ mealPlan, onAddMeal, onRemoveMeal, onClearWeek }) {
+const MealPlannerPage = ({ mealPlan, onAddMeal, onRemoveMeal, onClearWeek }) => {
     return (
         <div className="page">
             <h1>Meal Planner</h1>
@@ -15,6 +15,6 @@ function MealPlannerPage({ mealPlan, onAddMeal, onRemoveMeal, onClearWeek }) {
             />
         </div>
     );
-}
+};
 
 export default MealPlannerPage;

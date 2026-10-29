@@ -9,7 +9,7 @@ const SLOTS = ['breakfast', 'lunch', 'dinner'];
 //Each meal slot is color-coded
 const SLOT_COLORS = {breakfast: '#e67e22', lunch: '#2980b9', dinner: '#8e44ad'};
 
-function DayCard({ day, meals, allRecipes = [], onAddMeal, onRemoveMeal }) {
+const DayCard = ({ day, meals, allRecipes = [], onAddMeal, onRemoveMeal }) => {
 
     const [modalSlot, setModalSlot] =useState(null);
 
@@ -51,7 +51,7 @@ function DayCard({ day, meals, allRecipes = [], onAddMeal, onRemoveMeal }) {
             )}
         </div>
     );
-}
+};
 
 DayCard.propTypes = {
     day: PropTypes
