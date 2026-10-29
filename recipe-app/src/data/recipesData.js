@@ -668,7 +668,7 @@ export const onionRingsData = {
     ],
     instructions: [
         "Peel and then slice the onion into 1/2-inch-think rounds. Separate the layers into rings.",
-        "In a shallow dish, whisk together flour, salt, and paprika. In a medium mixing bowl, whisk together the milk and egg. In another shallow dish, stir together the panko and oil until well combined.",
+        "In a shallow dish, whisk together flour, salt, and paprika. In a medium mixing bowl, whisk together the buttermilk and egg. In another shallow dish, stir together the panko and oil until well combined.",
         "Coat the onion rings in the flour mixture shaking off the excess. Dip in the milk mixture, then coat with the flour mixture again. Re dip in the egg mixture, then coat the rings well with breadcrumbs. Place the breaded rings on a baking sheet.",
         "Spray the basket of an air fryer with cooking spray. Working in batches, place a few rings in air fryer basket leaving about ¾ inch of space around each ring. Spray the rings lightly with cooking spray.",
         "Air fry at 350°F for 12 to 15 minutes or until golden brown, flipping the rings and spraying again with cooking spray halfway through at about 6 minutes. Serve hot."

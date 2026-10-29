@@ -6,6 +6,44 @@ import Button from "../UI/Button";
 import { formatCookTime } from "../../utils/helpers";
 import styles from "./Recipe.module.css";
 
+//Readable title for the keyed instructions object (Samp and Beef Stew)
+const INSTRUCTION_HEADINGS = {
+    beefStew: "For The Beef Stew",
+    samp: "For the Samp",
+    serve: "To Serve",
+};
+
+// Ingredients: flat string[]  OR  [{ heading, items }]
+const normalizeIngredients = (ingredients = []) => {
+    const isGrouped = ingredients.length > 0 && typeof ingredients[0] === "object";
+    return isGrouped
+        ? ingredients
+        : [{ heading: null, items: ingredients }];
+};
+
+// Instructions: flat string[]  OR  { key: string[] }
+const normalizeInstructions = (instructions = []) =>
+    Array.isArray(instructions)
+        ? [{ heading: null, items: instructions }]
+        : Object.entries(instructions).map(([key, items]) => ({
+            heading: INSTRUCTION_HEADINGS[key] ?? key,
+            items,
+        }));
+
+const SectionList = ({ sections, ordered = false }) => {
+    const ListTag = ordered ? "ol" : "ul";
+    return sections.map(({ heading, items }, sectionIndex) => (
+        <div key={heading ?? sectionIndex}>
+            {heading && <h4>{heading}</h4>}
+            <ListTag>
+                {items.map((item, index) => (
+                    <li key={index}>{item}</li>
+                ))}
+            </ListTag>
+        </div>
+    ));
+};
+
 const RecipeDetail = () => {
     const {id}=useParams();
     const navigate = useNavigate();
@@ -36,19 +74,11 @@ const RecipeDetail = () => {
             <p>{formatCookTime(recipe.cookTime)} | Servings: {recipe.servings || 4} | {recipe.cuisine}</p>
 
             <Card title="Ingredients">
-                <ul>
-                    {recipe.ingredients.map((ingredient, index) => (
-                        <li key={index}>{ingredient}</li>
-                    ))}
-                </ul>
+                <SectionList sections={normalizeIngredients(recipe.ingredients)} />
             </Card>
 
             <Card title="Instructions">
-                <ol>
-                    {recipe.instructions.map((step, index) => (
-                        <li key={index}>{step}</li>
-                    ))}
-                </ol>
+                <SectionList sections={normalizeInstructions(recipe.instructions)} ordered />
             </Card>
 
             <VideoPlayer videoUrl={recipe.videoUrl} title={`${recipe.title} - Tutorial`} />
