@@ -8,34 +8,57 @@ import FavoritesPage from './pages/FavoritesPage'
 import NotFound from './pages/NotFound'
 import Navbar from './components/Navigation/Navbar'
 
+const createEmptyMealPlan = () =>
+  Object.fromEntries(
+    DAYS.map(day => [day, { breakfast: null, lunch: null, dinner: null }])
+  );
+
+const isPlainObject = (value) =>
+  value !== null && typeof value === 'object' && !Array.isArray(value);
+
+const loadFromStorage = (key, fallback, isValid) => {
+  try {
+    const raw = localStorage.getItem(key);
+    if (raw === null) return fallback;
+    const parsed = JSON.parse(raw);
+    return isValid(parsed) ? parsed : fallback;
+  } catch {
+    return fallback;
+  }
+};
+
+const saveToStorage = (key, value) => {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch {
+    // Storage full or blocked. The app still works without saving.
+  }
+};
+
 const App = () => {
-  const [favorites, setFavorites] = useState([])
-  const [mealPlan, setMealPlan] = useState({
-    monday: { breakfast: null, lunch: null, dinner: null },
-    tuesday: { breakfast: null, lunch: null, dinner: null },
-    wednesday: { breakfast: null, lunch: null, dinner: null },
-    thursday: { breakfast: null, lunch: null, dinner: null },
-    friday: { breakfast: null, lunch: null, dinner: null },
-    saturday: { breakfast: null, lunch: null, dinner: null },
-    sunday: { breakfast: null, lunch: null, dinner: null },
+  const [favorites, setFavorites] = useState(() =>
+    loadFromStorage('favorites', [], Array.isArray)
+  );
+
+  const [mealPlan, setMealPlan] = useState(() => {
+    const saved = loadFromStorage('mealPlan', null, isPlainObject);
+    const empty = createEmptyMealPlan();
+    if (!saved) return empty;
+
+    return Object.fromEntries(
+      DAYS.map(day => [
+        day,
+        { ...empty[day], ...(isPlainObject(saved[day]) ? saved[day] : {}) },
+      ])
+    );
   });
 
   useEffect(() => {
-    const savedFavorites = localStorage.getItem('favorites');
-    if (savedFavorites) setFavorites(JSON.parse(savedFavorites));
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    saveToStorage('favorites', favorites);
   }, [favorites]);
 
   useEffect(() => {
-    const savedMealPlan = localStorage.getItem('mealPlan');
-    if (savedMealPlan) setMealPlan(JSON.parse(savedMealPlan));
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('mealPlan', JSON.stringify(mealPlan));
+    saveToStorage('mealPlan', mealPlan);
   }, [mealPlan]);
 
   const handleFavoriteToggle = (recipe) => {
@@ -62,15 +85,7 @@ const App = () => {
   };
 
   const handleClearWeek = () => {
-    setMealPlan({
-      monday: { breakfast: null, lunch: null, dinner: null },
-    tuesday: { breakfast: null, lunch: null, dinner: null },
-    wednesday: { breakfast: null, lunch: null, dinner: null },
-    thursday: { breakfast: null, lunch: null, dinner: null },
-    friday: { breakfast: null, lunch: null, dinner: null },
-    saturday: { breakfast: null, lunch: null, dinner: null },
-    sunday: { breakfast: null, lunch: null, dinner: null },
-    });
+    setMealPlan(createEmptyMealPlan());
   };
 
   return (
