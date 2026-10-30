@@ -6,34 +6,30 @@ import Button from "../UI/Button";
 import { formatCookTime } from "../../utils/helpers";
 import styles from "./Recipe.module.css";
 
-//Readable title for the keyed instructions object (Samp and Beef Stew)
-const INSTRUCTION_HEADINGS = {
-    beefStew: "For The Beef Stew",
-    samp: "For the Samp",
-    serve: "To Serve",
+const toList = (value) => (Array.isArray(value) ? value : []);
+const isPlainObject = (value) =>
+    value !== null && typeof value === "object" && !Array.isArray(value);
+
+//Accepts string[] OR [{ heading, item }] OR a mix of both
+const normalizeSections = (value) => {
+    const list = toList(value);
+    if (!list.some(isPlainObject)) {
+        return [{ heading: null, items: list.map(String) }];
+    }
+    return list.map((entry) =>
+        isPlainObject(entry)
+            ? { heading: entry.heading ?? null, items: toList(entry.items).map(String) }
+            : { heading: null, items: [String(entry)] }
+    );
 };
 
-// Ingredients: flat string[]  OR  [{ heading, items }]
-const normalizeIngredients = (ingredients = []) => {
-    const isGrouped = ingredients.length > 0 && typeof ingredients[0] === "object";
-    return isGrouped
-        ? ingredients
-        : [{ heading: null, items: ingredients }];
-};
+const SectionList = ({ sections, ordered = false, emptyText }) => {
+    const visible = sections.filter((section) => section.items.length > 0);
+    if (visible.length === 0) return <p>{emptyText}</p>;
 
-// Instructions: flat string[]  OR  { key: string[] }
-const normalizeInstructions = (instructions = []) =>
-    Array.isArray(instructions)
-        ? [{ heading: null, items: instructions }]
-        : Object.entries(instructions).map(([key, items]) => ({
-            heading: INSTRUCTION_HEADINGS[key] ?? key,
-            items,
-        }));
-
-const SectionList = ({ sections, ordered = false }) => {
     const ListTag = ordered ? "ol" : "ul";
-    return sections.map(({ heading, items }, sectionIndex) => (
-        <div key={heading ?? sectionIndex}>
+    return visible.map(({ heading, items }, sectionIndex) => (
+        <div key={`${heading ?? "section"}-${sectionIndex}`}>
             {heading && <h4>{heading}</h4>}
             <ListTag>
                 {items.map((item, index) => (
@@ -45,18 +41,18 @@ const SectionList = ({ sections, ordered = false }) => {
 };
 
 const RecipeDetail = () => {
-    const {id}=useParams();
+    const { id } = useParams();
     const navigate = useNavigate();
 
-    const recipe = recipesData.find((r) => r.id === parseInt(id));
+    const recipe = recipesData.find((r) => r.id === parseInt(id, 10));
 
-    //Error state
-    if(!recipe){
-        return(
-        <div className="page">
-            <h1>Recipe not found</h1>
-            <Button onClick={() => navigate('/recipes')}>Back to Recipes</Button>
-        </div>
+    //Unknown ID
+    if (!recipe) {
+        return (
+            <div className="page">
+                <h1>Recipe not found</h1>
+                <Button onClick={() => navigate("/recipes")}>Back to Recipes</Button>
+            </div>
         );
     }
 
@@ -66,7 +62,7 @@ const RecipeDetail = () => {
 
     return (
         <div className={`page ${styles.detail}`}>
-            <Button variant="secondary" onClick={() => navigate('/recipes')}>Back to Recipes</Button>
+            <Button variant="secondary" onClick={() => navigate("/recipes")}>Back to Recipes</Button>
 
             <h1>{recipe.title}</h1>
             <img className={styles.detailImage} src={recipe.image} alt={recipe.title} />
@@ -74,11 +70,18 @@ const RecipeDetail = () => {
             <p>{formatCookTime(recipe.cookTime)} | Servings: {recipe.servings || 4} | {recipe.cuisine}</p>
 
             <Card title="Ingredients">
-                <SectionList sections={normalizeIngredients(recipe.ingredients)} />
+                <SectionList
+                    sections={normalizeSections(recipe.ingredients)}
+                    emptyText="No ingredients listed."
+                />
             </Card>
 
             <Card title="Instructions">
-                <SectionList sections={normalizeInstructions(recipe.instructions)} ordered />
+                <SectionList
+                    sections={normalizeSections(recipe.instructions)}
+                    ordered
+                    emptyText="No instructions listed."
+                />
             </Card>
 
             <VideoPlayer videoUrl={recipe.videoUrl} title={`${recipe.title} - Tutorial`} />
