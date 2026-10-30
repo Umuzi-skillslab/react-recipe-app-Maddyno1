@@ -465,23 +465,32 @@ export const sampAndBeefStewData = {
             ]
         }
     ],
-    instructions: {
-        beefStew: [
-            "Toss the beef with barbecue spice and peri-peri sauce. Heat a little oil in a large pot over medium-high heat and sear the beef in batches until browned on all sides. Remove and set aside.",
-            "In the same pot, add the onion and garlic and sauté until softened and fragrant, about 3-4 minutes.",
-            "Return the beef to the pot. Stir in the carrots, paprika, oregano, thyme, and tomato paste, coating everything well.",
-            "Pour in the chicken stock, stir, and bring to a gentle simmer. Cover and cook on low heat, stirring occasionally, for about 1.5 to 2 hours, until the beef is fork-tender.",
-            "Stir in the parsley, taste, and adjust seasoning if needed. Keep warm while you finish the samp."
-        ],
-        samp: [
-            "Rinse the quick samp well, then place in a pot with enough water to cover generously. Bring to a boil, then reduce to a simmer for about 30-40 minutes until tender.",
-            "Drain excess water. Stir in the butter, Aromat, and Knorr mushroom soup until well combined and creamy.",
-            "Fold in the cheese and coffee creamer. Cook on low heat, stirring often, for about 5 minutes until the cheese melts and the samp is rich and creamy."
-        ],
-        serve: [
-            "Plate the creamy samp alongside a generous helping of beef stew. Serve hot."
-        ]
-    },
+    instructions: [
+        {
+            heading: "For The Beef Stew",
+            items: [
+                "Toss the beef with barbecue spice and peri-peri sauce. Heat a little oil in a large pot over medium-high heat and sear the beef in batches until browned on all sides. Remove and set aside.",
+                "In the same pot, add the onion and garlic and sauté until softened and fragrant, about 3-4 minutes.",
+                "Return the beef to the pot. Stir in the carrots, paprika, oregano, thyme, and tomato paste, coating everything well.",
+                "Pour in the chicken stock, stir, and bring to a gentle simmer. Cover and cook on low heat, stirring occasionally, for about 1.5 to 2 hours, until the beef is fork-tender.",
+                "Stir in the parsley, taste, and adjust seasoning if needed. Keep warm while you finish the samp."
+            ]
+        },
+        {
+            heading: "For The Samp",
+            items: [
+                "Rinse the quick samp well, then place in a pot with enough water to cover generously. Bring to a boil, then reduce to a simmer for about 30-40 minutes until tender.",
+                "Drain excess water. Stir in the butter, Aromat, and Knorr mushroom soup until well combined and creamy.",
+                "Fold in the cheese and coffee creamer. Cook on low heat, stirring often, for about 5 minutes until the cheese melts and the samp is rich and creamy."
+            ]
+        },
+        {
+            heading: "To Serve",
+            items: [
+                "Plate the creamy samp alongside a generous helping of beef stew. Serve hot."
+            ]
+        },
+    ],
 };
 
 export const pepperSteakPieData = {
