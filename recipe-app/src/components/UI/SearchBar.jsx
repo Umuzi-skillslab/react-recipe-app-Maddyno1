@@ -5,21 +5,18 @@ const SearchBar = ({ searchTerm, onSearchChange, placeholder = "Search recipes..
     const [isFocused, setIsFocused] = useState(false);
 
     return (
-        //Form exists so Enter submits properly
-        <form
-            className={`${styles.searchBar} ${isFocused ? styles.searchFocused : ""}`}
-            onSubmit={(e) => e.preventDefault()}
-        >
+        <div className={`${styles.searchBar} ${isFocused ? styles.searchFocused : ""}`}>
             <input
-                type="text"
+                type="search"
                 value={searchTerm}
                 placeholder={placeholder}
+                aria-label="Search recipes"
                 onChange={(e) => onSearchChange(e.target.value)}
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
             />
-            <button type="submit">Search</button>
-        </form>
+            <small className={styles.searchHint}>Results update as you type</small>
+        </div>
     );
 };
 
