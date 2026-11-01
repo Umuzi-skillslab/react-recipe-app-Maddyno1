@@ -1,8 +1,8 @@
 ## 1. Component Hierarchy
-![Components hierarchy](screenshots/componentHierarchy.png.png)
+![Components hierarchy](screenshots/componentHierarchy.png)
 
 ## 2. Data Flow Diagram
-![Data Flow Diagram](screenshots/dataFlowDiagram.png.png)
+![Data Flow Diagram](screenshots/dataFlowDiagram.png)
 
 ## 3. Components and purposes
 # Pages: 

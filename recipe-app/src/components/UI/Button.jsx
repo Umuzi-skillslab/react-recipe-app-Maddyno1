@@ -10,7 +10,7 @@ const Button = ({ variant = 'primary', type = "button", onClick, children }) => 
     );
 };
 
-Button.prototypes = {
+Button.propTypes = {
     variant: PropTypes.oneOf(["primary", "secondary", "danger"]),
     type: PropTypes.string,
     onClick: PropTypes.func,

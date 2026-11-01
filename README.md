@@ -94,45 +94,46 @@ In your terminal run "npm install" and then "npm start" OR "npm run dev"
 ![Project Structure](screenshots/structureS.png)
 
 ## Component Descriptions:
-Navbar
+# Navbar
 Top navigation bar with links to all pages, a live favorites counter, and a collapsible mobile menu.
 
-RecipeCard
+# RecipeCard
 Displays a single recipe's image, title (linked to its detail page), difficulty/time/servings, and a favorite toggle button.
 
-RecipeList
+# RecipeList
 Renders a responsive grid of RecipeCards from a list of recipes.
 
-RecipeFilter
+# RecipeFilter
 Two <select> dropdowns for filtering by category and cuisine.
 
-RecipeDetail
+# RecipeDetail
 Full detail view for one recipe — ingredients, instructions, difficulty badge, and embedded video tutorial. Looked up by id from the URL.
 
-MealPlanner
+# MealPlanner
 Renders one DayCard per day of the week.
 
-DayCard
+# DayCard
 Shows breakfast/lunch/dinner slots for a single day; opens a Modal to assign a recipe to an empty slot, or remove a filled one.
 
-AudioPlayerRenders an HTML5 <audio> element with an optional cover image and title, used on the Home page's "Cooking Tip of the Day" card.
+# AudioPlayerRenders an HTML5 <audio> element with an optional cover image and title, used on the Home page's "Cooking Tip of the Day" card.
 
-VideoPlayer
+# VideoPlayer
 Renders a YouTube iframe embed when given a YouTube URL, or a native <video> element for direct video files. Used on RecipeDetail.
 
-Button
+# Button
 Reusable button with primary/secondary/danger style variants.
 
-CardGeneric bordered container with an optional title and className, used to group content.
+# Card
+Generic bordered container with an optional title and className, used to group content.
 
-Modal
+# Modal
 Overlay dialog with a backdrop-click-to-close and an explicit close button.
 
-Loading
+# Loading
 Spinner + message shown while recipes are "loading".
 
-SearchBar
-Controlled text input with a submit button for the recipe search.
+# SearchBar
+Controlled text input for the recipe search.
 
 
 ## State Management:

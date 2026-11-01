@@ -13,3 +13,5 @@ export function getYoutubeVideoId(url = "") {
     );
     return match ? match[1] : null;
 }
+
+export const DAYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];

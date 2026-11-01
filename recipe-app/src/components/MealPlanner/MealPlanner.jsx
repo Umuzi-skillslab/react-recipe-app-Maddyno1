@@ -1,12 +1,12 @@
-import DayCard from "./DayCard";
-import styles from "./MealPlanner.module.css";
+import DayCard from './DayCard';
+import { DAYS } from '../../utils/helpers';
+import styles from './MealPlanner.module.css';
 
-const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
 const MealPlanner = ({ mealPlan, allRecipes,onAddMeal, onRemoveMeal }) => {
     return (
         <div className={styles.planner}>
-            {days.map(day => (
+            {DAYS.map(day => (
                 <DayCard
                     key={day}
                     day={day}
