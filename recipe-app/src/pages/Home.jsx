@@ -11,6 +11,7 @@ const Home = () => {
             {/*Audio is wrapped in a card*/}
             <Card title="Cooking Tip of the Day!" className={styles.tipCard}>
                 <AudioPlayer
+                    audioUrl="/assets/audio/cookingTips.mp3"
                     title="Cooking Tips: Getting started in the kitchen"
                     image="/assets/images/lasagna.jpg"
                 />
