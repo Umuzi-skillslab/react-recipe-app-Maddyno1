@@ -20,7 +20,6 @@ VideoPlayer (YouTube embed or video), AudioPlayer (cooking tip)
 # UI (reusable):
 Button, Card, SearchBar, Loading, Modal
 Navigation: Navbar (links, active state, favorites count, hamburger menu)
-common: Footer
 
 ## 4. Props flow
 # favorites, onFavoriteToggle:
@@ -35,6 +34,6 @@ RecipesPage → SearchBar.
 # Card and Modal:
 Accept children.
 
-# RecipeCard, DayCard and Button:
+# RecipeCard, DayCard, Button, SearchBar, and RecipeFilter:
 Use PropTypes.
 DayCard has the default allRecipes = [].

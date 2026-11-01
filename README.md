@@ -6,7 +6,7 @@ Welcome to **The Flaming Inferno**, the single-page recipe app where every dish 
 # Features List:
 1. Recipe catalog- 18 recipes for breakfast, lunch, dinner, dessert, and snacks, each with an image, cook time, difficulty level and servings
 2. Search Bar- search for the recipe you're looking for using the title
-3. Filter Bar- filter according to category and cuisine
+3. Filter Bar- filter according to category, difficulty and cuisine, sort the results and clear all filters
 4. Simulated loading state- simulated delay which shows a spinner
 5. Recipe Detail page- shows an image of the dish, step-by-step instructions as well as an embedded video tutorial(Youtube links are embedded using iframe)
 6. Favorites-heart button which allows you to favorite and unfavorite
@@ -96,7 +96,7 @@ Renders a YouTube iframe embed when given a YouTube URL, or a native <video> ele
 State uses React's built-in hooks and is passed down via props. There is no global store.
 
 - **Shared state lives in `App.jsx`:** `favorites` (array of recipe objects) and `mealPlan` (an object keyed by day, each with `breakfast`, `lunch` and `dinner` slots).
-- **Page-local state** (search term, selected category and cuisine, loading flag) lives in `RecipesPage`.
+- **Page-local state** (search term, category, cuisine, difficulty, sort order, loading flag) lives in `RecipesPage`.
 - **Persistence:** both shared values are saved to `localStorage` in `useEffect` hooks.
 - **Static data:** recipes are read from `data/recipesData.js` and are not stored in state.
 
