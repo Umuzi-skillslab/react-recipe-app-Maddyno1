@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { useState, useRef } from "react";
 import styles from "./UI.module.css";
 
 const SearchBar = ({ searchTerm, onSearchChange, placeholder = "Search recipes..." }) => {

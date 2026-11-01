@@ -75,11 +75,11 @@ const RecipesPage = ({favorites, onFavoriteToggle }) => {
                 <Loading />
             ) : (
                 <>
-                    {filteredRecipes.length === 0 && (
+                    {visibleRecipes.length === 0 && (
                         <p className={styles.noResults}>No recipes match your search or filters.</p>
                     )}
                     <RecipeList
-                        recipes={filteredRecipes}
+                        recipes={visibleRecipes}
                         favorites={favorites}
                         onFavoriteToggle={onFavoriteToggle}
                     />
