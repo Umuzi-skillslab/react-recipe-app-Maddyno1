@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from "./UI.module.css"
 
 const Card = ({ title, children, className="" }) => {
@@ -7,6 +8,12 @@ const Card = ({ title, children, className="" }) => {
             {children}
         </div>
     );
+};
+
+Card.propTypes = {
+    title: PropTypes.string,
+    className: PropTypes.string,
+    children: PropTypes.node,
 };
 
 export default Card;

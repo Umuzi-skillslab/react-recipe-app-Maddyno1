@@ -100,18 +100,6 @@ State uses React's built-in hooks and is passed down via props. There is no glob
 - **Persistence:** both shared values are saved to `localStorage` in `useEffect` hooks.
 - **Static data:** recipes are read from `data/recipesData.js` and are not stored in state.
 
-```mermaid
-flowchart LR
-    LS[(localStorage)] -- "load once on startup<br/>(validated)" --> App
-    App["App.jsx<br/>favorites + mealPlan"] -- "save on every change" --> LS
-    App -- "props: favorites, onFavoriteToggle" --> RecipesPage
-    App -- "props: favorites, onFavoriteToggle" --> FavoritesPage
-    App -- "props: mealPlan, onAddMeal,<br/>onRemoveMeal, onClearWeek" --> MealPlannerPage
-    App -- "prop: favoritesCount" --> Navbar
-    RecipesPage -- "onFavoriteToggle(recipe)" --> App
-    MealPlannerPage -- "onAddMeal / onRemoveMeal" --> App
-```
-
 # Routing:
 Built with react-router-dom v7 using BrowserRouter, all declared in App.jsx.
 | Path | Component | Purpose |

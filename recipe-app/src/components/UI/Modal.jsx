@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from "./UI.module.css";
 
 const Modal = ({ onClose, children }) => {
@@ -10,6 +11,11 @@ const Modal = ({ onClose, children }) => {
             </div>
         </div>
     );
+};
+
+Modal.propTypes = {
+    onClose: PropTypes.func.isRequired,
+    children: PropTypes.node,
 };
 
 export default Modal;

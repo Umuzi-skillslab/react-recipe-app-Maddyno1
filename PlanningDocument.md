@@ -5,33 +5,36 @@
 ![Data Flow Diagram](screenshots/dataFlowDiagram.png)
 
 ## 3. Components and purposes
-# Pages: 
+# Pages:
 Home (intro and audio tip), RecipesPage (search, filters, catalog), RecipeDetail (full recipe), MealPlannerPage, FavoritesPage, NotFound (404)
 
-# Recipe: 
+# Recipe:
 RecipeList (grid), RecipeCard (summary and favorite button), RecipeFilter (category and cuisine selects)
 
-# MealPlanner: 
+# MealPlanner:
 MealPlanner (weekly grid), DayCard (one day, reused ×7)
 
-# Media: 
+# Media:
 VideoPlayer (YouTube embed or video), AudioPlayer (cooking tip)
 
-# UI (reusable): 
+# UI (reusable):
 Button, Card, SearchBar, Loading, Modal
 Navigation: Navbar (links, active state, favorites count, hamburger menu)
 common: Footer
 
 ## 4. Props flow
-# favorites, onFavoriteToggle: 
+# favorites, onFavoriteToggle:
 App → RecipesPage → RecipeList → RecipeCard. recipes comes from recipesData.js in RecipesPage.
 
-# mealPlan, onAddMeal, onRemoveMeal, onClearWeek: 
+# mealPlan, onAddMeal, onRemoveMeal, onClearWeek:
 App → MealPlannerPage → MealPlanner. DayCard then receives day, meals and allRecipes.
 
-# searchTerm, onSearchChange: 
+# searchTerm, onSearchChange:
 RecipesPage → SearchBar.
 
-# Card and Modal accept children.
+# Card and Modal:
+Accept children.
 
-# RecipeCard, DayCard and Button use PropTypes. DayCard has the default allRecipes = [].
+# RecipeCard, DayCard and Button:
+Use PropTypes.
+DayCard has the default allRecipes = [].

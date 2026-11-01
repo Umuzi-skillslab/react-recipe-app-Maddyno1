@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from "./Media.module.css";
 
 //Default audio keeps player functional
@@ -12,6 +13,12 @@ const AudioPlayer = ({ audioUrl = "https://arre.link/lz358qb", title = "Cooking 
       </audio>
     </div>
   );
+};
+
+AudioPlayer.propTypes = {
+    audioUrl: PropTypes.string,
+    title: PropTypes.string,
+    image: PropTypes.string,
 };
 
 export default AudioPlayer;

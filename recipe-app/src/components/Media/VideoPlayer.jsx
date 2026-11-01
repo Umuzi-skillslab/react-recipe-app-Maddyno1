@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from "./Media.module.css";
 import { getYoutubeVideoId } from "../../utils/helpers";
 
@@ -26,6 +27,11 @@ const VideoPlayer = ({ videoUrl = "https://www.w3schools.com/html/mov_bbb.mp4", 
       )}
     </div>
   );
+};
+
+VideoPlayer.propTypes = {
+    videoUrl: PropTypes.string,
+    title: PropTypes.string,
 };
 
 export default VideoPlayer;
