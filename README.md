@@ -1,7 +1,22 @@
 ## 🔥THE FLAMING INFERNO🔥Recipe App
-Welcome to my single-page recipe app, built with React and Vite. Users can browse a selection on the finest recipes sourced from sites like "The Preppy Chef", Ntsako T on YouTube and a few others. They can view the full recipe details, watch a YouTube tutorial, save their favorite and plan meals for the whole week.
+### Scorching your tastebuds with unbelievable flavor!
 
-THE FLAMING INFERNO: Scorching your tastebuds with unbelievable flavor!
+Welcome to **The Flaming Inferno**, the single-page recipe app where every dish is turned up to eleven. Built with **React** and **Vite** for blazing-fast performance, it puts a hand-picked collection of the finest recipes at your fingertips, sourced from culinary heavyweights like **The Preppy Chef**, **Ntsako**, and other top creators.
+
+## What You Can Do
+
+-**Browse** a curated selection of mouth-watering recipes
+-**Dive into the full details**: ingredients, steps, everything you need
+-**Watch the YouTube tutorial** and cook along with the pros
+-**Save your favorites** so the best dishes are always one click away
+-**Plan your meals for the entire week** and never ask "what's for dinner?" again
+
+## Built With
+
+- React
+- Vite
+
+Fire up the stove. Your next favorite meal is waiting.
 
 ## Features List:
 1. Recipe catalog- 18 recipes for breakfast, lunch, dinner, dessert, and snacks, each with an image, cook time, difficulty level and servings
@@ -25,8 +40,40 @@ THE FLAMING INFERNO: Scorching your tastebuds with unbelievable flavor!
 ## Component Architecture:
 The app follows a pages to feature components to UI primitives structure:
 
-Pages are route-level components. They own page-specific local state (e.g. search term, filters) and receive shared app state as props from App.jsx. Feature components are grouped by domain: Recipe(card, list, filter, detail), MealPlanner(weekly grid, day cards), Media(audio/video players), Navigation(navbar). UI primitives (components/UI/) are small, reusable, presentation-only pieces (Button, Card, Modal, Loading, SearchBar) used across pages and feature components. Card accepts an optional className so pages can adjust its layout.
-Styling is done for each component with CSS Modules.
+- **Pages** (`pages/`) are route-level components. They own page-specific local state (search term, filters, simulated loading) and receive shared app state as props from `App.jsx`.
+- **Feature components** are grouped by domain: Recipe (card, list, filter, detail), MealPlanner (weekly grid, day cards), Media (audio/video players), Navigation (navbar).
+- **UI primitives** (`components/UI/`) are small, presentation-only pieces (Button, Card, Modal, Loading, SearchBar) reused across the app. Card accepts an optional `className` so pages can adjust its layout.
+
+Each component is styled with its own CSS Module, and props are validated with PropTypes.
+
+```mermaid
+flowchart TD
+    App["App.jsx<br/>(favorites, mealPlan)"] --> Navbar
+    App --> Home
+    App --> RecipesPage
+    App --> RecipeDetail
+    App --> MealPlannerPage
+    App --> FavoritesPage
+    App --> NotFound
+
+    Home --> AudioPlayer
+    Home --> Card
+
+    RecipesPage --> SearchBar
+    RecipesPage --> RecipeFilter
+    RecipesPage --> Loading
+    RecipesPage --> RecipeList
+    FavoritesPage --> RecipeList
+    RecipeList --> RecipeCard
+
+    RecipeDetail --> Card
+    RecipeDetail --> VideoPlayer
+
+    MealPlannerPage --> MealPlanner
+    MealPlanner --> DayCard
+    DayCard --> Modal
+    DayCard --> Button
+```
 
 ## Installation Instructions:
 # Step 1:
@@ -39,12 +86,10 @@ In your terminal, navigate to the right file using "cd react-recipe-app-Maddyno1
 In your terminal run "npm install" and then "npm start" OR "npm run dev"
 
 ## Project Structure:
-The app follows a pages to feature components to UI primitives structure:
-
-Pages are route-level components. They own page-specific local state (e.g. search term, filters) and receive shared app state as props from App.jsx. 
-Feature components are grouped by domain: Recipe(card, list, filter, detail), MealPlanner(weekly grid, day cards), Media(audio/video players), Navigation(navbar). 
-UI primitives (components/UI/) are small, reusable, presentation-only pieces (Button, Card, Modal, Loading, SearchBar) used across pages and feature components. Card accepts an optional className so pages can adjust its layout.
-Styling is done for each component with CSS Modules.
+- **`components/`** is grouped by domain, with one CSS Module per folder.
+- **`pages/`** holds the route-level components.
+- **`data/` and `utils/`** keep the recipe data and helper functions out of the components.
+- **`App.jsx`** owns the shared state (`favorites`, `mealPlan`) and declares all routes.
 
 ![Project Structure](screenshots/structureS.png)
 
@@ -87,20 +132,52 @@ Loading
 Spinner + message shown while recipes are "loading".
 
 SearchBar
-Controlled text input with a submit button for the recipe search. 
+Controlled text input with a submit button for the recipe search.
 
 
 ## State Management:
-State is managed with React's built-in useState/useEffect and passed down via props.
+State uses React's built-in hooks and is passed down via props. There is no global store.
+
+- **Shared state lives in `App.jsx`:** `favorites` (array of recipe objects) and `mealPlan` (an object keyed by day, each with `breakfast`, `lunch` and `dinner` slots). `App` also defines the handlers that change it: `handleFavoriteToggle`, `handleAddMeal`, `handleRemoveMeal` and `handleClearWeek`.
+- **Page-local state** (search term, selected category and cuisine, loading flag) lives in `RecipesPage`. The modal's open slot lives in `DayCard`.
+- **Persistence:** both shared values are saved to `localStorage` in `useEffect` hooks. On startup they are loaded through lazy `useState` initializers, wrapped in `try/catch` with shape checks, so corrupt or missing saved data falls back to empty defaults instead of stopping the app from opening.
+- **Static data:** recipes are read from `data/recipesData.js` and are not stored in state.
+
+```mermaid
+flowchart LR
+    LS[(localStorage)] -- "load once on startup<br/>(validated)" --> App
+    App["App.jsx<br/>favorites + mealPlan"] -- "save on every change" --> LS
+    App -- "props: favorites, onFavoriteToggle" --> RecipesPage
+    App -- "props: favorites, onFavoriteToggle" --> FavoritesPage
+    App -- "props: mealPlan, onAddMeal,<br/>onRemoveMeal, onClearWeek" --> MealPlannerPage
+    App -- "prop: favoritesCount" --> Navbar
+    RecipesPage -- "onFavoriteToggle(recipe)" --> App
+    MealPlannerPage -- "onAddMeal / onRemoveMeal" --> App
+```
 
 ## Routing:
 Built with react-router-dom v7 using BrowserRouter, all declared in App.jsx.
-Home: Landing page with intro text and a "Cooking Tip" audio card.
-RecipesPage: Full recipe catalog with search + filters.
-RecipesDetail: Detail view for one recipe, matched by numeric id.
-MealPlannerPage: Weekly meal planner grid.
-FavoritesPage: List of favorited recipes (or an empty-state message).
-NotFound: Catch-all 404 page.
+| Path | Component | Purpose |
+|---|---|---|
+| `/` | Home | Landing page with intro text and a "Cooking Tip" audio card |
+| `/recipes` | RecipesPage | Full catalog with search and filters |
+| `/recipes/:id` | RecipeDetail | Detail view for one recipe, found by numeric `id` via `useParams`. An unknown id shows a "Recipe not found" message with a back button |
+| `/meal-planner` | MealPlannerPage | Weekly meal planner grid |
+| `/favorites` | FavoritesPage | Favorited recipes, or an empty-state message |
+| `*` | NotFound | Catch-all 404 page |
+
+`useNavigate` is used for the back buttons, and `useLocation` for highlighting the active nav link.
+
+```mermaid
+flowchart LR
+    URL{URL} -->|"/"| Home
+    URL -->|"/recipes"| RecipesPage
+    URL -->|"/recipes/:id"| RecipeDetail
+    URL -->|"/meal-planner"| MealPlannerPage
+    URL -->|"/favorites"| FavoritesPage
+    URL -->|"anything else"| NotFound
+    RecipeDetail -->|"id not in recipesData"| Missing["Recipe not found message"]
+```
 
 ## Future Enhancements:
 Generate a shopping list from a week's meal plan.
