@@ -15,18 +15,18 @@
 | Navigation | Navbar (links, active state, favorites count, hamburger menu) |
 
 # Props flow
-## favorites, onFavoriteToggle:
+1. favorites, onFavoriteToggle:
 App → RecipesPage → RecipeList → RecipeCard. recipes comes from recipesData.js in RecipesPage.
 
-## mealPlan, onAddMeal, onRemoveMeal, onClearWeek:
+2. mealPlan, onAddMeal, onRemoveMeal, onClearWeek:
 App → MealPlannerPage → MealPlanner. DayCard then receives day, meals and allRecipes.
 
-## searchTerm, onSearchChange:
+3. searchTerm, onSearchChange:
 RecipesPage → SearchBar.
 
-## Card and Modal:
+4. Card and Modal:
 Accept children.
 
-## RecipeCard, DayCard, Button, SearchBar, and RecipeFilter:
+5. RecipeCard, DayCard, Button, SearchBar, and RecipeFilter:
 Use PropTypes.
 DayCard has the default allRecipes = [].
