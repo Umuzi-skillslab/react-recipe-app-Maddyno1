@@ -81,16 +81,16 @@ Top navigation bar with links to all pages, a live favorites counter, and a coll
 Displays a single recipe's image, title (linked to its detail page), difficulty/time/servings, and a favorite toggle button.
 
 ## RecipeDetail
-Full detail view for one recipe — ingredients, instructions, difficulty badge, and embedded video tutorial. Looked up by id from the URL.
+Full detail view for one recipe — ingredients, instructions, difficulty badge, and embedded video tutorial.
 
 ## DayCard
 Shows breakfast/lunch/dinner slots for a single day; opens a Modal to assign a recipe to an empty slot, or remove a filled one.
 
 ## AudioPlayer
-Renders an HTML5 <audio> element with an optional cover image and title, used on the Home page's "Cooking Tip of the Day" card.
+Renders an HTML5 <audio> element with a cover image and title, used on the Home page's "Cooking Tip of the Day" card.
 
 ## VideoPlayer
-Renders a YouTube iframe embed when given a YouTube URL, or a native <video> element for direct video files. Used on RecipeDetail.
+Renders a YouTube iframe embed when given a YouTube URL, or a native <video> element for direct video files.
 
 # State Management:
 State uses React's built-in hooks and is passed down via props. There is no global store.
